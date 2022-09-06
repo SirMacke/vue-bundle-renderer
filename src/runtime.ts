@@ -144,30 +144,6 @@ export function getAllDependencies (ids: Set<string>, rendererContext: RendererC
     Object.assign(allDeps.scripts, deps.scripts)
     Object.assign(allDeps.styles, deps.styles)
     Object.assign(allDeps.preload, deps.preload)
-    Object.assign(allDeps.prefetch, deps.prefetch)
-
-    for (const dynamicDepId of rendererContext.manifest[id]?.dynamicImports || []) {
-      const dynamicDeps = getModuleDependencies(dynamicDepId, rendererContext)
-      Object.assign(allDeps.prefetch, dynamicDeps.scripts)
-      Object.assign(allDeps.prefetch, dynamicDeps.styles)
-      Object.assign(allDeps.prefetch, dynamicDeps.preload)
-    }
-  }
-
-  const filteredPrefetch: ModuleDependencies['prefetch'] = {}
-  for (const id in allDeps.prefetch) {
-    const dep = allDeps.prefetch[id]
-    if (rendererContext.shouldPrefetch(dep)) {
-      filteredPrefetch[id] = dep
-    }
-  }
-  allDeps.prefetch = filteredPrefetch
-
-  // Don't render prefetch links if we're preloading them
-  for (const id in allDeps.prefetch) {
-    if (id in allDeps.preload) {
-      delete allDeps.prefetch[id]
-    }
   }
 
   rendererContext._dependencySets[cacheKey] = allDeps
