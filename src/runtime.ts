@@ -143,7 +143,6 @@ export function getAllDependencies (ids: Set<string>, rendererContext: RendererC
     const deps = getModuleDependencies(id, rendererContext)
     Object.assign(allDeps.scripts, deps.scripts)
     Object.assign(allDeps.styles, deps.styles)
-    Object.assign(allDeps.preload, deps.preload)
   }
 
   rendererContext._dependencySets[cacheKey] = allDeps

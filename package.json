@@ -1,8 +1,11 @@
 {
-  "name": "vue-bundle-renderer",
+  "name": "@sirmacke/vue-bundle-renderer",
   "version": "0.4.2",
   "description": "Bundle Renderer for Vue 3.0",
-  "repository": "nuxt-contrib/vue-bundle-renderer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt-contrib/vue-bundle-renderer.git"
+  },
   "license": "MIT",
   "exports": {
     ".": {
@@ -44,5 +47,13 @@
     "vitest": "0.19.1",
     "vue": "3"
   },
-  "packageManager": "pnpm@7.8.0"
+  "packageManager": "pnpm@7.8.0",
+  "bugs": {
+    "url": "https://github.com/nuxt-contrib/vue-bundle-renderer/issues"
+  },
+  "homepage": "https://github.com/nuxt-contrib/vue-bundle-renderer#readme",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
 }
